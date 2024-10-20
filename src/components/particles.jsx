@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { Application, Assets, Graphics, Sprite } from 'pixi.js';
-import Anamay from '../assets/anamay.png';
-import amongUsBlue from '../assets/amongus_blue.png'
-import amongUsCyan from '../assets/amongus_cyan.png'
-import amongUsGreen from '../assets/amongus_green.png'
-import amongUsLime from '../assets/amongus_lime.png'
-import amongUsOrange from '../assets/amongus_orange.png'
-import amongUsPink from '../assets/amongus_pink.png'
-import amongUsRed from '../assets/amongus_red.png'
-import amongUsWhite from '../assets/amongus_white.png'
+import Anamay from '../assets/amongUsAssets/anamay.png';
+import amongUsBlue from '../assets/amongUsAssets/amongus_blue.png'
+import amongUsCyan from '../assets/amongUsAssets/amongus_cyan.png'
+import amongUsGreen from '../assets/amongUsAssets/amongus_green.png'
+import amongUsLime from '../assets/amongUsAssets/amongus_lime.png'
+import amongUsOrange from '../assets/amongUsAssets/amongus_orange.png'
+import amongUsPink from '../assets/amongUsAssets/amongus_pink.png'
+import amongUsRed from '../assets/amongUsAssets/amongus_red.png'
+import amongUsWhite from '../assets/amongUsAssets/amongus_white.png'
 
 const Particles = () => {
         const amongUsImages = [
@@ -22,7 +22,7 @@ const Particles = () => {
                 amongUsWhite,
                 Anamay
         ];
-        const appRef = useRef(null);
+        const amongUsAppRef = useRef(null);
 
         function getRandomIndex(length) {
                 return Math.floor(Math.random() * length);
@@ -37,14 +37,14 @@ const Particles = () => {
 
                 const initializePixi = async () => {
 
-                        if (appRef.current) return;
+                        if (amongUsAppRef.current) return;
 
-                        const app = new Application();
+                        const amongUsApp = new Application();
                         const parentContainer = document.querySelector('.pixi-container');
-                        await app.init({ background: '#000000', resizeTo: parentContainer });
-                        appRef.current = app;
+                        await amongUsApp.init({ background: '#000000', resizeTo: parentContainer });
+                        amongUsAppRef.current = amongUsApp;
 
-                        parentContainer.appendChild(app.canvas);
+                        parentContainer.appendChild(amongUsApp.canvas);
 
                         const stars = [];
                         const starCount = 25;
@@ -58,11 +58,11 @@ const Particles = () => {
                                 star.x = Math.random() * parentContainer.clientWidth;
                                 star.y = Math.random() * parentContainer.clientHeight;
 
-                                app.stage.addChild(star);
+                                amongUsApp.stage.addChild(star);
                                 stars.push(star);
                         }
 
-                        app.ticker.add(() => {
+                        amongUsApp.ticker.add(() => {
                                 stars.forEach(star => {
                                         star.x += 2;
 
@@ -86,7 +86,7 @@ const Particles = () => {
                         for (let i = 0; i < LoadedTextures.length; i++) {
                                 const sprite = new Sprite(LoadedTextures[i]);
                                 sprite.anchor.set(0.5);
-                                sprite.x = 0;
+                                sprite.x = -30;
                                 sprite.y = parentContainer.clientHeight / 2;
                                 if (amongUsImages[i] === Anamay) {
                                         sprite.height = 250;
@@ -99,26 +99,26 @@ const Particles = () => {
                         }
 
                         let randomAmongUsSprite = sprites[getRandomIndex(sprites.length)];
-                        app.stage.addChild(randomAmongUsSprite);
+                        amongUsApp.stage.addChild(randomAmongUsSprite);
 
-                        app.ticker.add(() => {
-                                randomAmongUsSprite.x += 3.4;
-                                randomAmongUsSprite.rotation += 0.04;
+                        amongUsApp.ticker.add(() => {
+                                randomAmongUsSprite.x += 3.2;
+                                randomAmongUsSprite.rotation += 0.02;
 
                                 if (randomAmongUsSprite.x > parentContainer.clientWidth + 50) {
 
                                         console.log(1);
 
-                                        app.ticker.stop();
+                                        amongUsApp.ticker.stop();
 
-                                        app.stage.removeChild(randomAmongUsSprite);
+                                        amongUsApp.stage.removeChild(randomAmongUsSprite);
 
                                         randomAmongUsSprite = sprites[getRandomIndex(sprites.length)];
-                                        randomAmongUsSprite.x = 0;
+                                        randomAmongUsSprite.x = -30;
                                         randomAmongUsSprite.y = getRandomValue(parentContainer.clientHeight);
-                                        app.stage.addChild(randomAmongUsSprite);
+                                        amongUsApp.stage.addChild(randomAmongUsSprite);
 
-                                        app.ticker.start();
+                                        amongUsApp.ticker.start();
                                 }
                         });
                 };
@@ -126,9 +126,9 @@ const Particles = () => {
                 initializePixi();
 
                 return () => {
-                        if (appRef.current != null) {
-                                appRef.current.destroy(true, { children: true, texture: true, baseTexture: true });
-                                appRef.current = null;
+                        if (amongUsAppRef.current != null) {
+                                amongUsAppRef.current.destroy(true, { children: true, texture: true, baseTexture: true });
+                                amongUsAppRef.current = null;
                         }
                 };
         }, []);
