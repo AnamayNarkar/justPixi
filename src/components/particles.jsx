@@ -102,8 +102,8 @@ const Particles = () => {
                         amongUsApp.stage.addChild(randomAmongUsSprite);
 
                         amongUsApp.ticker.add(() => {
-                                randomAmongUsSprite.x += 3.2;
-                                randomAmongUsSprite.rotation += 0.02;
+                                randomAmongUsSprite.x += 3.4;
+                                randomAmongUsSprite.rotation += 0.035;
 
                                 if (randomAmongUsSprite.x > parentContainer.clientWidth + 50) {
 
@@ -135,7 +135,7 @@ const Particles = () => {
 
         return (
                 <div className='pixi-container' style={{
-                        width: '100%', height: '100%', margin: 0, padding: 0, overflowX: 'hidden', overflowY: 'hidden'
+                        width: '100%', height: '100%', margin: 0, padding: 0
                 }}>
                 </div>
         );
