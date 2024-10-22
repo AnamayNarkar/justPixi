@@ -10,7 +10,7 @@ import amongUsPink from '../assets/amongUsAssets/amongus_pink.png'
 import amongUsRed from '../assets/amongUsAssets/amongus_red.png'
 import amongUsWhite from '../assets/amongUsAssets/amongus_white.png'
 
-const Particles = () => {
+const AmongUsEjectionAnimation = () => {
         const amongUsImages = [
                 amongUsBlue,
                 amongUsCyan,
@@ -141,4 +141,4 @@ const Particles = () => {
         );
 };
 
-export default Particles;
+export default AmongUsEjectionAnimation;
