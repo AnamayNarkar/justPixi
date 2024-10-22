@@ -113,10 +113,10 @@ const DotsBackground = () => {
                                                 Math.pow(dot.x - mousePosition.x, 2) + Math.pow(dot.y - mousePosition.y, 2)
                                         );
 
-                                        if (distance < 100) {
+                                        if (distance < 125) {
                                                 dot.tint = 0x00dbb3;
                                                 dot.scale = 1.4;
-                                        } else if (distance > 100 && distance < 175) {
+                                        } else if (distance > 125 && distance < 150) {
                                                 dot.tint = 0x09BE9E;
                                                 dot.scale = 1.2;
                                         } else {
