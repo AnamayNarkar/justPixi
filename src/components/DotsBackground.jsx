@@ -1,4 +1,4 @@
-import { Application, Graphics } from 'pixi.js';
+import { Application, Graphics, ColorMatrixFilter } from 'pixi.js';
 import React, { useEffect, useRef } from 'react';
 
 const DotsBackground = () => {
@@ -30,7 +30,6 @@ const DotsBackground = () => {
                 rgba(0, 0, 0, 0.5) 2.5%,  
                 rgba(0, 0, 0, 0) 10%
             )
-
         `
         };
 
@@ -100,10 +99,20 @@ const DotsBackground = () => {
                                 mousePosition.y = event.clientY;
                         });
 
+
+                        // const darkenFilter = new ColorMatrixFilter();
+                        // darkenFilter.brightness(0.6, false);
+
+                        // const littleLighterFilter = new ColorMatrixFilter();
+                        // littleLighterFilter.brightness(0.8, false);
+
                         dotsBackgroundApp.ticker.add(() => {
+                                // const maskRadius = 125;
+
                                 if (!isMouseInsideParentContainer) {
                                         dots.forEach(dot => {
                                                 dot.tint = 0x848282;
+                                                // dot.filters = [darkenFilter];
                                         });
                                         return;
                                 }
@@ -112,6 +121,12 @@ const DotsBackground = () => {
                                         const distance = Math.sqrt(
                                                 Math.pow(dot.x - mousePosition.x, 2) + Math.pow(dot.y - mousePosition.y, 2)
                                         );
+
+                                        // if (distance >= maskRadius) {
+                                        //         dot.filters = [darkenFilter];
+                                        // } else {
+                                        //         dot.filters = [littleLighterFilter];
+                                        // }
 
                                         if (distance < 125) {
                                                 dot.tint = 0x00dbb3;
