@@ -2,6 +2,7 @@ import React from "react";
 import AmongUsEjectionAnimation from "./components/AmongUsEjectionAnimation";
 import DotsBackground from "./components/DotsBackground";
 import AmongUsEjectionStyleAnimationForGithubReadme from "./components/AmongUsEjectionStyleAnimationForGithubReadme";
+import EyeTracking from "./components/EyeTracking";
 
 const App = () => {
   return (
@@ -9,7 +10,8 @@ const App = () => {
       <div className="animationMainParent">
         {/* <AmongUsEjectionAnimation /> */}
         {/* <AmongUsEjectionStyleAnimationForGithubReadme /> */}
-        <DotsBackground />
+        {/* <DotsBackground /> */}
+        <EyeTracking />
       </div>
     </div>
   );
